@@ -1,0 +1,21 @@
+nav{
+    display: flex;
+  }
+  .div-logo{
+    width: 50%;
+  }
+  .div-index{
+    width: 50%;
+  }
+  .logo-navbar{
+    width: 200px;
+  }
+  .index{
+      list-style-type: none; 
+      padding: 0;
+      margin: 0; 
+      display: flex;
+  }
+  .index li{
+    padding: 20px;
+  }
