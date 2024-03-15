@@ -1,7 +1,30 @@
-.logo{
+.logo {
   width: 356px;
   height: 96.4px;
 }
-  .bg-purple{
-    background-color: #8253C6;
-  }
+.bg-purple {
+  background-color: #8253c6;
+}
+
+.btn-login {
+  border: 1px solid #8253c6;
+  background-color: transparent;
+  color: #8253c6;
+  font-weight: bold;
+}
+
+.btn-login:hover {
+  background-color: #8253c6;
+  transition: ease 0.5s;
+  color: #ffff;
+}
+
+.btn-cadastro {
+  background-color: #8253c6;
+  color: #ffff;
+}
+
+.btn-cadastro:hover {
+  background-color: #6439a0;
+  color: #fff;
+}
