@@ -47,7 +47,7 @@ function NavBar() {
                   <button className="btn btn-login">Login</button>
                 </li>
               </ul>
-              <div className="area-btn p-2"></div>
+             
             </div>
           </div>
         </div>
