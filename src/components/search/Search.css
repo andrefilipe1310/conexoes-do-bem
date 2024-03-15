@@ -25,3 +25,8 @@
 .form-control::placeholder{
  color: #fff;
 }
+
+.form-control:focus{
+    color: #fff;
+    background-color: #8253c6;
+}

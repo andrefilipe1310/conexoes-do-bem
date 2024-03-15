@@ -1,0 +1,25 @@
+.card-search{
+    color: #282828;
+
+}
+
+.card{
+    
+    border-radius: 8px;
+    box-shadow: #282828 8px;
+}
+.title{
+    font-weight: 600;
+    text-align: left;
+
+}
+
+.likes{
+    text-align: left;
+}
+.btn-learn-more{
+    
+    width: 8rem;
+    background-color: #8253c6;
+    color: #fff;
+}
