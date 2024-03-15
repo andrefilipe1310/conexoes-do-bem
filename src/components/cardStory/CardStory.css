@@ -1,0 +1,24 @@
+.card-story{
+    background-image: url("../../assets/images/img-card-storie-exemple.png");
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%), url("../../assets/images/img-card-storie-exemple.png");
+    width: 13em;
+    height: 22em;
+    border-radius: 8px;
+    background-size: contain;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: flex;
+    align-items:self-end;
+    text-align: left;
+}
+.title-story{
+    font-weight: 700;
+    margin-left: 1em;
+}
+
+.perfil-name-story{
+    margin-left: 1em;
+    font-weight: 200;
+}

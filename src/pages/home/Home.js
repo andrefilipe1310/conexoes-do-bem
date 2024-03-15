@@ -2,6 +2,7 @@ import NavBar from "../../components/navbar/NavBar";
 import Search from "../../components/search/Search";
 import card from "../../assets/images/card-exemple.png"
 import CardSearch from "../../components/card/CardSearch";
+import CardStory from "../../components/cardStory/CardStory";
 import "./Home.css"
 function Home(){
     return(
@@ -22,10 +23,19 @@ function Home(){
                 </div>
             </div>
             <div className="bg-light inspiring-stories p-3">
-                    <h3 className="stories fs-4">Hístorias</h3>
-                    <p className="inspiration fs-1">Inspiradoras</p>
+                    <h3 className="stories fs-4">HISTORIAS</h3>
+                    <p className="inspiration fs-1">INSPIRADORAS</p>
                     <p className="description-stories">Acompanhe de perto as ongs através das entrevistas e vídeos.</p>
+
+                    <div className="row container text-center">
+                        <div className="col-3 mx-auto"><CardStory/></div>
+                        <div className="col-3 mx-auto"><CardStory/></div>
+                        <div className="col-3 mx-auto"><CardStory/></div>
+                        <div className="col-3 mx-auto"><CardStory/></div>
+                        
+                    </div>
             </div>
+
 
         </div>
     )
