@@ -1,13 +1,12 @@
+import "./App.css";
+import Navbar2 from "./components/navbar/NavBar2";
 
-import './App.css';
-import Home from './pages/home/Home';
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <Home/>
-      
+      <Navbar2 itens={["inicio", "inicio 2", "inicio 3"]} buttons={['login','cadastre sua ONG']} />
     </div>
   );
-}
+};
 
 export default App;

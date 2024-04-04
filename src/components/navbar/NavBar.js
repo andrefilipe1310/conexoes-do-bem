@@ -3,6 +3,7 @@ import "./NavBar.css";
 
 function NavBar() {
   return (
+    
     <div className="nav-bar">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
