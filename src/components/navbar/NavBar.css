@@ -1,9 +1,13 @@
 .logo {
-  width: 356px;
-  height: 96.4px;
+  width: 10em;
+  height: 3em;
 }
 .bg-purple {
   background-color: #8253c6;
+}
+.btn-purple{
+  background-color: #6439a0;
+  color: #fff;
 }
 
 .btn-login {

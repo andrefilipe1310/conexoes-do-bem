@@ -16,9 +16,11 @@ const NavBar = () => (
 );
 
 const Logo = () => (
-  <div className="area-logo">
+  
+  <div className="area-logo ">
     <Link className="navbar-brand" to='/'><img src={logo} className="logo" alt="Logo" /></Link>
   </div>
+  
 );
 
 const ToggleNavButton = () => (
@@ -41,8 +43,8 @@ const NavBarMenu = () => (
       <ul className="navbar-nav me-auto list-unstyled ">
         <NavItem title="Início" />
         <NavDropdown title="Categorias" items={["Animais", "Saúde infantil","Educação infantil"]} />
-        <NavItemButton title="CADASTRE SUA ONG" link="/cadastro" className="ms-2" />
-        <NavItemButton title="Login" link="/login" className="ms-2" />
+        <NavItemButton title="CADASTRE SUA ONG" link="/cadastro" className="" />
+        <NavItemButton title="Login" link="/login" className="" />
       </ul>
     </div>
   </div>
@@ -58,7 +60,7 @@ const NavItem = ({ title }) => (
 
 const NavItemButton = ({ title, className,link }) => (
   <li className={`nav-item ms-4 ${className}`}>
-    <Link to={link}><button className="btn btn-primary">{title}</button></Link>
+    <Link to={link}><button className="btn btn-purple">{title}</button></Link>
     
   </li>
 );

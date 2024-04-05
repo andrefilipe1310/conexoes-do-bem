@@ -2,6 +2,7 @@ import NavBar from "../../components/navbar/NavBar";
 import Search from "../../components/search/Search";
 import CardSearch from "../../components/card/CardSearch";
 import CardStory from "../../components/cardStory/CardStory";
+import Footer from "../../components/footer/Footer";
 import "./Home.css"
 
 
@@ -40,7 +41,7 @@ const Home = ()=>{
                     </div>
             </div>
 
-
+        <Footer/>
         </div>
     )
 }
