@@ -1,10 +1,23 @@
+import React from "react";
 import "./App.css";
-import Navbar2 from "./components/navbar/NavBar2";
+import Home from "./pages/home/Home";
+import Cadastro from "./pages/cadastro/Cadastro";
+import Login from "./pages/login/Login";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom"; // Importe BrowserRouter e Routes
 
 const App = () => {
   return (
     <div className="App">
-      <Navbar2 itens={["inicio", "inicio 2", "inicio 3"]} buttons={['login','cadastre sua ONG']} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home /> } />
+          <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/login" element={Login}></Route>
+          <Route path="*" element={<h1>Not Found</h1>} />
+        </Routes>
+      </BrowserRouter>
+      
     </div>
   );
 };

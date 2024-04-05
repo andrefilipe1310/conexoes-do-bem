@@ -1,10 +1,15 @@
 import NavBar from "../../components/navbar/NavBar";
 import Search from "../../components/search/Search";
-import card from "../../assets/images/card-exemple.png"
 import CardSearch from "../../components/card/CardSearch";
 import CardStory from "../../components/cardStory/CardStory";
 import "./Home.css"
-function Home(){
+
+
+export const renderCards = ({cards})=>{
+    
+}
+
+const Home = ()=>{
     return(
         <div className="home">
             <NavBar/>
@@ -15,10 +20,9 @@ function Home(){
                         <div className="col-4"><CardSearch/></div>
                         <div className="col-4"><CardSearch/></div>
                         <div className="col-4"><CardSearch/></div>
-
-                        <div className="col-4"><img src={card}/></div>
-                        <div className="col-4"><img src={card}/></div>
-                        <div className="col-4"><img src={card}/></div>
+                        <div className="col-4"><CardSearch/></div>
+                        <div className="col-4"><CardSearch/></div>
+                        <div className="col-4"><CardSearch/></div>                 
                     </div>
                 </div>
             </div>
