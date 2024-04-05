@@ -1,6 +1,7 @@
 .logo {
   width: 10em;
   height: 3em;
+  max-width: 200px;
 }
 .bg-purple {
   background-color: #8253c6;
@@ -8,6 +9,7 @@
 .btn-purple{
   background-color: #6439a0;
   color: #fff;
+  width: 12em;
 }
 
 .btn-login {
@@ -32,3 +34,5 @@
   background-color: #6439a0;
   color: #fff;
 }
+
+

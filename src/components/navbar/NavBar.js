@@ -43,8 +43,10 @@ const NavBarMenu = () => (
       <ul className="navbar-nav me-auto list-unstyled ">
         <NavItem title="Início" />
         <NavDropdown title="Categorias" items={["Animais", "Saúde infantil","Educação infantil"]} />
-        <NavItemButton title="CADASTRE SUA ONG" link="/cadastro" className="" />
-        <NavItemButton title="Login" link="/login" className="" />
+        
+        <NavItemButton title="CADASTRE-SE" link="/cadastro" className="btn-cadastro " />
+        <NavItemButton title="Login" link="/login" className="btn-login " />
+        
       </ul>
     </div>
   </div>
@@ -59,8 +61,8 @@ const NavItem = ({ title }) => (
 );
 
 const NavItemButton = ({ title, className,link }) => (
-  <li className={`nav-item ms-4 ${className}`}>
-    <Link to={link}><button className="btn btn-purple">{title}</button></Link>
+  <li className={`nav-item ms-4`}>
+    <Link to={link}><button className={"btn "+className}>{title}</button></Link>
     
   </li>
 );
