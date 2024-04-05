@@ -1,9 +1,10 @@
 import React from 'react'
-import CadastroCard from '../../components/cadastroCard/CadastroCard'
+import './Cadastro.css'
+
 const Cadastro = ()=>{
     return(
-        <div className='cadastro'>
-            <CadastroCard/>
+        <div className='container-fluid cadastro bg-purple'>
+            
         </div>
     )
 }

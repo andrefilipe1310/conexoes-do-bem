@@ -1,0 +1,9 @@
+.cadastro{
+    background-color: #8253c6;
+    height: 32em;
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
