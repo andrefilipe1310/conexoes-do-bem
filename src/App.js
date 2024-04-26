@@ -3,21 +3,10 @@ import "./App.css";
 import Home from "./pages/home/Home";
 import Cadastro from "./pages/cadastro/Cadastro";
 import Login from "./pages/login/Login"
-
-// import express from "express";
-// import conectaDataBase from "./config/dbConnect";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PerfilEditar from "./pages/perfil/PerfilEditar";
 
-// const conexaoBd = await conectaDataBase();
 
-// conexaoBd.on("error", (erro)=>{
-//   console.error("erro de conexao", erro)
-// })
-
-// conexaoBd.once("open",()=>{
-//   console.log("conexao com banco feita com sucesso")
-// })
 
 const App = () => {
 
@@ -31,7 +20,6 @@ const App = () => {
           <Route path="/login" element={<Login />} /> {/* Rota para o componente Login */}
           <Route path="*" element={<h1>Not Found</h1>} /> {/* Rota para páginas não encontradas */}
           <Route path="/perfil" element={<PerfilEditar/>} />  {/* Rota para o perfil da ong*/}
-          {/* <Route path="/excuir-ong" element={}/>  Rota para excuir ong */}
         </Routes>
       </Router>
     </div>

@@ -1,10 +1,19 @@
-.editar-card {
-    width: 300px;
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+    max-width: 800px; 
     margin: 0 auto;
+}
+
+.perfil-container,
+.editar-card {
+    width: calc(50% - 10px); 
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f5f5f5;
+    box-sizing: border-box; 
 }
 
 .titulo-card {
@@ -15,15 +24,16 @@
 label {
     display: block;
     margin-bottom: 5px;
-    color: #6a5acd; 
+    color: #6a5acd;
 }
 
 input {
-    width: 100%;
+    width: calc(100% - 18px); 
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box; 
 }
 
 button {
