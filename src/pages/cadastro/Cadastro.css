@@ -1,9 +1,8 @@
-.cadastro{
-    background-color: #8253c6;
-    height: 32em;
-    width: 100%;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center
+.cadastro {
+  background-color:#6f45a9;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

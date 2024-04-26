@@ -10,7 +10,7 @@
     padding: 1.5em;
     border-radius: 1em;
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
-    width: 20em;
+    width: 30em;
 }
 
 .form-group {
@@ -33,7 +33,7 @@
     justify-content: space-between;
 }
 
-.btn {
+.esqueci, .entrar {
     width:12em;
     padding: 1em 2em;
     border-radius: 0.5em;
@@ -42,6 +42,12 @@
     transition: background-color 0.3s ease;
     margin-top: 2%;
 }
+
+.esqueci{
+    width: 50%;
+    margin-left: 5px;
+}
+
 
 .btn:hover {
     background-color: #008080;

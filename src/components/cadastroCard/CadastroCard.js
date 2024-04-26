@@ -5,20 +5,18 @@ const CadastroCard = () => {
     return (
         <div className="cadastro-card bg-light">
             <form>
-                <label>Nome completo: </label>
+                <h2 className="titulo-card">Cadastre sua Ong</h2>
+                <label>Nome da sua Ong: </label>
                 <input placeholder="Seu nome completo aqui" />
-                <label>CPF: </label>
-                <input placeholder="Seu CPF  aqui" />
                 <label>CNPJ: </label>
                 <input placeholder="Seu CNPJ aqui" />
-                <label>Nome de Usuario: </label>
+                <label>Email: </label>
+                <input placeholder="Seu Email aqui" />
+                <label>Nome de Reponsavel: </label>
                 <input placeholder="EX: Felipe123" />
-                <label>Senha: </label>
-                <input placeholder="senha aqui" />
-                <label>Confirme sua senha: </label>
-                <input placeholder="senha aqui novamente" />
+                
                 <div>
-                    <button className="btn btn-success">Cadastrar</button>
+                    <button className="btn">Cadastrar</button>
                 </div>
 
 
