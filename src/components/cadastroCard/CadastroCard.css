@@ -1,31 +1,41 @@
-.cadastro-card{
-    width: auto;
-    min-width: 30em;
-    height: auto;
-    padding: 20px 20px;
-    border-radius: 10px;
+.cadastro-card {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
 
 }
 
-.cadastro-card input{
-    border-radius: 3px;
-    border: solid 1px #000;
-    padding: 1%;
-    margin-left: 2%;
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.cadastro-card form{
+.cadastro-card form {
     display: flex;
     flex-direction: column;
-    
+
 }
 
-.btn{
+.btn {
     margin-top: 10px;
-background-color: #b386f2;
+    background-color: #6a5acd;
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 
 }
 
-.titulo-card{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+.titulo-card {
+    text-align: center;
+    color: #6a5acd;
 }

@@ -6,6 +6,7 @@ const LoginCard = () => {
         <div className='login-card-container'>
             <div className='login-card'>
                 <form>
+                <h2 className="titulo-card">Login</h2>
                     <div className='form-group'>
                         <label>Email:</label>
                         <input type='text' placeholder='Digite seu email aqui' />

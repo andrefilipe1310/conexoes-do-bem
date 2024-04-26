@@ -21,8 +21,10 @@ const CardEditarOng = () => {
                 <div>
                     <button className="btn btn-primary">Editar ONG</button>
                     <button className="btn btn-danger">Excluir ONG</button>
+                    {/* <Link to="/excluir-ong"><button className="btn btn-danger">Excluir ONG</button></Link> */}
                 </div>
 
+                
             </form>
         </div>
     )

@@ -12,16 +12,12 @@ const CadastroCard = () => {
                 <input placeholder="Seu CNPJ aqui" />
                 <label>Email: </label>
                 <input placeholder="Seu Email aqui" />
-                <label>Nome de Reponsavel: </label>
+                <label>Nome de Reponsável: </label>
                 <input placeholder="EX: Felipe123" />
                 
                 <div>
                     <button className="btn">Cadastrar</button>
                 </div>
-
-
-
-
             </form>
         </div>
     )

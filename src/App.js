@@ -20,6 +20,8 @@ import PerfilEditar from "./pages/perfil/PerfilEditar";
 // })
 
 const App = () => {
+
+  
   return (
     <div className="App">
       <Router>
@@ -28,7 +30,8 @@ const App = () => {
           <Route path="/cadastro" element={<Cadastro />} /> {/* Rota para o componente Cadastro */}
           <Route path="/login" element={<Login />} /> {/* Rota para o componente Login */}
           <Route path="*" element={<h1>Not Found</h1>} /> {/* Rota para páginas não encontradas */}
-          <Route path="/perfil" element={<PerfilEditar/>} />
+          <Route path="/perfil" element={<PerfilEditar/>} />  {/* Rota para o perfil da ong*/}
+          {/* <Route path="/excuir-ong" element={}/>  Rota para excuir ong */}
         </Routes>
       </Router>
     </div>

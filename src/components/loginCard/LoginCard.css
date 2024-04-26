@@ -6,11 +6,12 @@
 }
 
 .login-card {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
     background-color: #f5f5f5;
-    padding: 1.5em;
-    border-radius: 1em;
-    box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
-    width: 30em;
 }
 
 .form-group {
