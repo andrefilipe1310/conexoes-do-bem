@@ -38,7 +38,7 @@ const CardEditarOng = () => {
     return (
         <div className="container">
             <div className="perfil-container">
-                <h2>Perfil da sua Ong</h2>
+                <h2 className="titulo-card">Perfil da sua Ong</h2>
                 {dadosOng ? (
                     <div className="dados-ong">
                         <p><strong>Nome da Ong:</strong> {dadosOng.nomeOng}</p>
