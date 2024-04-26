@@ -4,20 +4,21 @@ import Home from "./pages/home/Home";
 import Cadastro from "./pages/cadastro/Cadastro";
 import Login from "./pages/login/Login"
 
-import { BrowserRouter, Routes, Route } from "react-router-dom"; // Importe BrowserRouter e Routes
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 
 const App = () => {
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router>
         <Routes>
-          <Route path="/" element={<Home /> } />
-          <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/login" element={<Login/>}></Route>
-          <Route path="*" element={<h1>Not Found</h1>} />
+          <Route path="/" element={<Home />} /> {/* Rota para o componente Home */}
+          <Route path="/cadastro" element={<Cadastro />} /> {/* Rota para o componente Cadastro */}
+          <Route path="/login" element={<Login />} /> {/* Rota para o componente Login */}
+          <Route path="*" element={<h1>Not Found</h1>} /> {/* Rota para páginas não encontradas */}
         </Routes>
-      </BrowserRouter>
-      
+      </Router>
     </div>
   );
 };
