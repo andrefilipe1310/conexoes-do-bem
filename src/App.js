@@ -5,7 +5,7 @@ import Cadastro from "./pages/cadastro/Cadastro";
 import Login from "./pages/login/Login"
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PerfilEditar from "./pages/perfil/PerfilEditar";
-
+import PaginaONG from "./pages/paginaONG/PaginaONG";
 
 
 const App = () => {
@@ -20,6 +20,7 @@ const App = () => {
           <Route path="/login" element={<Login />} /> {/* Rota para o componente Login */}
           <Route path="*" element={<h1>Not Found</h1>} /> {/* Rota para páginas não encontradas */}
           <Route path="/perfil" element={<PerfilEditar/>} />  {/* Rota para o perfil da ong*/}
+          <Route path="/ong" element={<PaginaONG/>} />  {/* Rota para a pagina da ong*/}
         </Routes>
       </Router>
     </div>

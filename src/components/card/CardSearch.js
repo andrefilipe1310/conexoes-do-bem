@@ -1,6 +1,6 @@
 import "./CardSearch.css"
 import imgBackground from "../../assets/images/img-card.png"
-
+import { Link } from 'react-router-dom'
 const CardSearch = ({ title, imageUrl, likes }) => {
     return (
         <div className="card-search">
@@ -11,7 +11,8 @@ const CardSearch = ({ title, imageUrl, likes }) => {
                     <p className="likes">+{likes || 40} curtidas</p>
                 </div>
                 <div className="container-fluid mb-3 d-flex justify-content-end">
-                    <button className="btn btn-learn-more">Saiba mais</button>
+                <Link to={"/ong"}><button  className="btn btn-learn-more">Saiba mais</button></Link>
+                    
                 </div>
             </div>
         </div>
