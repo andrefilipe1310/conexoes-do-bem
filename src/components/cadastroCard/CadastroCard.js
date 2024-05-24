@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import './CadastroCard.css'
+import './CadastroCard.css';
 import axios from "axios";
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 const CadastroCard = () => {
-
     const [formData, setFormData] = useState({
         nomeOng: "",
         cnpj: "",
         email: "",
-        responsavel: ""
+        responsavel: "",
+        senha: ""
     });
+
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -20,15 +22,19 @@ const CadastroCard = () => {
         });
     };
 
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const jsonData = JSON.stringify(formData);
-
-        localStorage.setItem('dadosOng', jsonData);
-
-        window.location.href = "/Perfil";
+        try {
+            const response = await axios.post('http://localhost:3000/api/cadastro', {
+                nome: formData.nomeOng,
+                email: formData.email,
+                senha: formData.senha // Adicionei o campo senha
+            });
+            alert('Usuário cadastrado com sucesso!');
+            navigate('/perfil');
+        } catch (error) {
+            alert('Erro ao cadastrar usuário');
+        }
     };
 
     return (
@@ -39,7 +45,7 @@ const CadastroCard = () => {
                 <input
                     type="text"
                     name="nomeOng"
-                    placeholder="Seu nome completo aqui"
+                    placeholder="Nome da ONG"
                     value={formData.nomeOng}
                     onChange={handleInputChange}
                 />
@@ -47,7 +53,7 @@ const CadastroCard = () => {
                 <input
                     type="text"
                     name="cnpj"
-                    placeholder="Seu CNPJ aqui"
+                    placeholder="CNPJ"
                     value={formData.cnpj}
                     onChange={handleInputChange}
                 />
@@ -55,16 +61,24 @@ const CadastroCard = () => {
                 <input
                     type="email"
                     name="email"
-                    placeholder="Seu Email aqui"
+                    placeholder="Email"
                     value={formData.email}
                     onChange={handleInputChange}
                 />
-                <label>Nome de Reponsável: </label>
+                <label>Nome de Responsável: </label>
                 <input
                     type="text"
                     name="responsavel"
-                    placeholder="EX: Felipe123"
+                    placeholder="Nome do Responsável"
                     value={formData.responsavel}
+                    onChange={handleInputChange}
+                />
+                <label>Senha: </label> {/* Adicionei o campo senha */}
+                <input
+                    type="password"
+                    name="senha"
+                    placeholder="Senha"
+                    value={formData.senha}
                     onChange={handleInputChange}
                 />
                 <div>
@@ -72,7 +86,7 @@ const CadastroCard = () => {
                 </div>
             </form>
         </div>
-    )
-}
+    );
+};
 
 export default CadastroCard;
