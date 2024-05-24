@@ -8,7 +8,7 @@ const CadastroCard = () => {
         nomeOng: "",
         cnpj: "",
         email: "",
-        responsavel: "",
+        nomeResponsavel: "", // Corrigido o nome do campo
         senha: ""
     });
 
@@ -24,16 +24,15 @@ const CadastroCard = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
         try {
-            const response = await axios.post('http://localhost:3000/api/cadastro', {
-                nome: formData.nomeOng,
-                email: formData.email,
-                senha: formData.senha // Adicionei o campo senha
-            });
-            alert('Usuário cadastrado com sucesso!');
-            navigate('/perfil');
+            // Enviar os dados do formulário para a API
+            await axios.post('http://localhost:4000/ongs', formData);
+            // Redirecionar para outra página após o cadastro
+            navigate('/');
         } catch (error) {
-            alert('Erro ao cadastrar usuário');
+            console.error('Error creating NGO:', error);
+            // Lidar com erros de forma adequada, como exibir uma mensagem para o usuário
         }
     };
 
@@ -65,15 +64,15 @@ const CadastroCard = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                 />
-                <label>Nome de Responsável: </label>
+                <label>Nome de Responsável: </label> {/* Corrigido o nome do campo */}
                 <input
                     type="text"
-                    name="responsavel"
+                    name="nomeResponsavel" // Corrigido o nome do campo
                     placeholder="Nome do Responsável"
-                    value={formData.responsavel}
+                    value={formData.nomeResponsavel} // Corrigido o nome do campo
                     onChange={handleInputChange}
                 />
-                <label>Senha: </label> {/* Adicionei o campo senha */}
+                <label>Senha: </label>
                 <input
                     type="password"
                     name="senha"

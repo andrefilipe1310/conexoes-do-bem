@@ -1,10 +1,11 @@
 import express from 'express';
 import { MongoClient,ObjectId } from 'mongodb';
-
+import cors from 'cors';
 const app = express();
 const port = 4000;
 
 // Middleware para analisar o corpo da requisição como JSON
+app.use(cors());
 app.use(express.json());
 
 // URI de conexão com o MongoDB
@@ -127,7 +128,30 @@ app.put('/ongs/:id', async (req, res) => {
     res.status(500).json({ error: "Error updating NGO" });
   }
 });
+app.get('/ongs/email/:email', async (req, res) => {
+  try {
+    const client = await connectToMongoDB();
+    const database = client.db();
+    const ongsCollection = database.collection('ongs');
 
+    // Extrair o email da ONG da URL da requisição
+    const email = req.params.email;
+
+    // Buscar a ONG pelo email na coleção de ONGs
+    const ong = await ongsCollection.findOne({ email });
+
+    if (!ong) {
+      return res.status(404).json({ error: "NGO not found" });
+    }
+
+    // Enviar resposta com a ONG encontrada
+    res.status(200).json(ong);
+  } catch (err) {
+    // Lidar com erros
+    console.error("Error retrieving NGO by email:", err);
+    res.status(500).json({ error: "Error retrieving NGO by email" });
+  }
+});
 // Rota para deletar uma ONG por ID
 app.delete('/ongs/:id', async (req, res) => {
   try {

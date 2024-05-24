@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from "react";
 import './CardEditarOng.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const CardEditarOng = () => {
     const [dadosOng, setDadosOng] = useState(null);
+    const [error, setError] = useState(null);
 
-    
     useEffect(() => {
-        const dadosSalvos = localStorage.getItem('dadosOng');
-        if (dadosSalvos) {
-            setDadosOng(JSON.parse(dadosSalvos));
-        }
+        const fetchOngData = async () => {
+            try {
+                const userId = localStorage.getItem('userId');
+                const response = await axios.get('http://localhost:4000/ongs/'+userId); // Substitua '123' pelo ID da ONG
+                setDadosOng(response.data);
+            } catch (error) {
+                setError('Erro ao buscar dados da ONG. Por favor, tente novamente.');
+            }
+        };
+
+        fetchOngData();
     }, []);
 
     const handleInputChange = (e) => {
@@ -21,30 +29,37 @@ const CardEditarOng = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        localStorage.setItem('dadosOng', JSON.stringify(dadosOng));
-        alert('Alterações salvas com sucesso!');
+        try {
+            await axios.put(`http://localhost:4000/ongs/${dadosOng._id}`, dadosOng);
+            alert('Alterações salvas com sucesso!');
+        } catch (error) {
+            setError('Erro ao salvar alterações. Por favor, tente novamente.');
+        }
     };
 
-    
-    const handleExcluirPerfil = () => {
-        
-        localStorage.removeItem('dadosOng');
-        alert('Perfil excluído com sucesso.');
-    
+    const handleExcluirPerfil = async () => {
+        try {
+            await axios.delete(`http://localhost:4000/ongs/${dadosOng._id}`);
+            localStorage.removeItem('dadosOng');
+            alert('Perfil excluído com sucesso.');
+        } catch (error) {
+            setError('Erro ao excluir perfil. Por favor, tente novamente.');
+        }
     };
 
     return (
         <div className="container">
             <div className="perfil-container">
                 <h2 className="titulo-card">Perfil da sua Ong</h2>
+                {error && <p className="error-message">{error}</p>}
                 {dadosOng ? (
                     <div className="dados-ong">
                         <p><strong>Nome da Ong:</strong> {dadosOng.nomeOng}</p>
                         <p><strong>CNPJ:</strong> {dadosOng.cnpj}</p>
                         <p><strong>Email:</strong> {dadosOng.email}</p>
-                        <p><strong>Responsável:</strong> {dadosOng.responsavel}</p>
+                        <p><strong>Responsável:</strong> {dadosOng.nomeResponsavel}</p> {/* Use o campo 'nomeResponsavel' retornado pela API */}
                     </div>
                 ) : (
                     <p>Ainda não há dados cadastrados para a Ong.</p>
@@ -80,9 +95,9 @@ const CardEditarOng = () => {
                     <label>Nome de Reponsavel: </label>
                     <input
                         type="text"
-                        name="responsavel"
+                        name="nomeResponsavel"
                         placeholder="EX: Felipe123"
-                        value={dadosOng ? dadosOng.responsavel : ""}
+                        value={dadosOng ? dadosOng.nomeResponsavel : ""}
                         onChange={handleInputChange}
                     />
                     <div>
