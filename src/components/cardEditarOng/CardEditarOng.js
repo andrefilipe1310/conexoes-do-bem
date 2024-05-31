@@ -1,17 +1,41 @@
 import React, { useState, useEffect } from "react";
 import './CardEditarOng.css';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CardEditarOng = () => {
-    const [dadosOng, setDadosOng] = useState(null);
+    const [dadosOng, setDadosOng] = useState({
+        nomeOng: "",
+        nomeResponsavel: "",
+        email: "",
+        cnpj: "",
+        senha: ""
+    });
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
+    const ongId = localStorage.getItem('ongId');
 
-    
     useEffect(() => {
-        const dadosSalvos = localStorage.getItem('dadosOng');
-        if (dadosSalvos) {
-            setDadosOng(JSON.parse(dadosSalvos));
-        }
-    }, []);
+        const fetchData = async () => {
+            if (!ongId) {
+                setError("ID da ONG não encontrado no localStorage.");
+                setLoading(false);
+                return;
+            }
+
+            try {
+                const response = await axios.get(`http://localhost:4000/ongs/${ongId}`);
+                setDadosOng(response.data);
+                setLoading(false);
+            } catch (error) {
+                setError("Erro ao buscar informações da ONG.");
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [ongId]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -21,19 +45,35 @@ const CardEditarOng = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        localStorage.setItem('dadosOng', JSON.stringify(dadosOng));
-        alert('Alterações salvas com sucesso!');
+        try {
+            await axios.put(`http://localhost:4000/ongs/${ongId}`, dadosOng);
+            alert('Alterações salvas com sucesso!');
+            navigate('/perfil');
+        } catch (error) {
+            setError("Erro ao salvar alterações. Por favor, tente novamente.");
+        }
     };
 
-    
-    const handleExcluirPerfil = () => {
-        
-        localStorage.removeItem('dadosOng');
-        alert('Perfil excluído com sucesso.');
-    
+    const handleExcluirPerfil = async () => {
+        try {
+            await axios.delete(`http://localhost:4000/ongs/${ongId}`);
+            localStorage.removeItem('ongId');
+            alert('Perfil excluído com sucesso.');
+            navigate('/');
+        } catch (error) {
+            setError("Erro ao excluir perfil. Por favor, tente novamente.");
+        }
     };
+
+    if (loading) {
+        return <p>Carregando...</p>;
+    }
+
+    if (error) {
+        return <p>{error}</p>;
+    }
 
     return (
         <div className="container">
@@ -44,7 +84,7 @@ const CardEditarOng = () => {
                         <p><strong>Nome da Ong:</strong> {dadosOng.nomeOng}</p>
                         <p><strong>CNPJ:</strong> {dadosOng.cnpj}</p>
                         <p><strong>Email:</strong> {dadosOng.email}</p>
-                        <p><strong>Responsável:</strong> {dadosOng.responsavel}</p>
+                        <p><strong>Responsável:</strong> {dadosOng.nomeResponsavel}</p>
                     </div>
                 ) : (
                     <p>Ainda não há dados cadastrados para a Ong.</p>
@@ -57,8 +97,8 @@ const CardEditarOng = () => {
                     <input
                         type="text"
                         name="nomeOng"
-                        placeholder="Nome"
-                        value={dadosOng ? dadosOng.nomeOng : ""}
+                        placeholder="Nome da ONG"
+                        value={dadosOng.nomeOng}
                         onChange={handleInputChange}
                     />
                     <label>CNPJ: </label>
@@ -66,23 +106,31 @@ const CardEditarOng = () => {
                         type="text"
                         name="cnpj"
                         placeholder="CNPJ"
-                        value={dadosOng ? dadosOng.cnpj : ""}
+                        value={dadosOng.cnpj}
                         onChange={handleInputChange}
                     />
-                    <label>Email cadastrado: </label>
+                    <label>Email: </label>
                     <input
                         type="email"
                         name="email"
                         placeholder="Email"
-                        value={dadosOng ? dadosOng.email : ""}
+                        value={dadosOng.email}
                         onChange={handleInputChange}
                     />
-                    <label>Nome de Reponsavel: </label>
+                    <label>Nome de Responsável: </label>
                     <input
                         type="text"
-                        name="responsavel"
-                        placeholder="EX: Felipe123"
-                        value={dadosOng ? dadosOng.responsavel : ""}
+                        name="nomeResponsavel"
+                        placeholder="Nome do Responsável"
+                        value={dadosOng.nomeResponsavel}
+                        onChange={handleInputChange}
+                    />
+                    <label>Senha: </label>
+                    <input
+                        type="password"
+                        name="senha"
+                        placeholder="Senha"
+                        value={dadosOng.senha}
                         onChange={handleInputChange}
                     />
                     <div>

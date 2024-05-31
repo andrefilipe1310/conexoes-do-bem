@@ -25,11 +25,16 @@ const CadastroCard = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/api/cadastro', {
+            console.log(formData)
+            const response = await axios.post('http://localhost:4000/ongs', {
                 nome: formData.nomeOng,
                 email: formData.email,
-                senha: formData.senha // Adicionei o campo senha
+                senha: formData.senha,
+                cnpj:formData.cnpj,
+                nomeResponsavel:formData.responsavel
             });
+            console.log(response.data)
+            localStorage.setItem("ongId",response.data.ong.id)
             alert('Usuário cadastrado com sucesso!');
             navigate('/perfil');
         } catch (error) {

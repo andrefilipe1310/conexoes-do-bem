@@ -12,10 +12,15 @@ const LoginCard = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/api/login', { email, senha });
-            if (response.data.message === 'Login bem-sucedido') {
+            
+            const response = await axios.post('http://localhost:4000/login', { email:email, senha:senha });
+           
+            if (response.status >= 200 && response.status < 300) {
+            
+                localStorage.setItem({"ongId":response.data._id})
                 navigate('/perfil');
             } else {
+                
                 setError('Email ou senha incorretos. Por favor, tente novamente.');
             }
         } catch (error) {

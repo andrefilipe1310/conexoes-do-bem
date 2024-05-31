@@ -1,7 +1,8 @@
 import express from 'express';
 import { MongoClient,ObjectId } from 'mongodb';
-
+import cors from 'cors'
 const app = express();
+app.use(cors())
 const port = 4000;
 
 // Middleware para analisar o corpo da requisição como JSON
@@ -45,7 +46,7 @@ app.post('/ongs', async (req, res) => {
     if (!result.acknowledged) {
       throw new Error("Failed to insert new NGO");
     }
-    console.log(result)
+    
     // Enviar resposta com a nova ONG criada
     res.status(201).json({ message: "ONG created successfully", ong:{ id:result.insertedId, nomeOng,nomeResponsavel,email,cnpj}});
   } catch (err) {
@@ -54,7 +55,34 @@ app.post('/ongs', async (req, res) => {
     res.status(500).json({ error: "Error creating NGO" });
   }
 });
+app.post('/login/', async (req, res) => {
+  try {
+    const client = await connectToMongoDB();
+    const database = client.db();
+    const ongsCollection = database.collection('ongs');
 
+    // Extrair o ID da ONG da URL da requisição
+   
+    const {email, senha} = req.body
+    // Convertendo a string do ID para um objeto ObjectId
+   console.log(req.body)
+    
+    // Buscar a ONG pelo ID na coleção de ONGs
+    
+    const ong = await ongsCollection.findOne({email:email,senha:senha})
+    console.log(ong)
+    if (!ong) {
+      return res.status(404).json({ error: "NGO not found" });
+    }
+    
+    // Enviar resposta com a ONG encontrada
+    res.status(200).json(ong);
+  } catch (err) {
+    // Lidar com erros
+    console.error("Error retrieving NGO:", err);
+    res.status(500).json({ error: "Error retrieving NGO" });
+  }
+});
 app.get('/ongs/:id', async (req, res) => {
   try {
     const client = await connectToMongoDB();
